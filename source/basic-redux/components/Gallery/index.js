@@ -3,13 +3,18 @@ import cn from 'classnames';
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
 import Styles from './styles.m.css';
-import { showNextPhoto, showSelectedPhoto } from '../../bus/gallery/actions';
+import { showNextPhoto, showPreviousPhoto, showSelectedPhoto } from '../../bus/gallery/actions';
 import { store } from '../../init/store';
 
 @hot(module)
 export default class Gallery extends Component {
     _showNextPhoto = () => {
         store.dispatch(showNextPhoto());
+        this.forceUpdate();
+    };
+
+    _showNPreviousPhoto = () => {
+        store.dispatch(showPreviousPhoto());
         this.forceUpdate();
     };
 
@@ -40,7 +45,8 @@ export default class Gallery extends Component {
             <section className = { Styles.gallery }>
                 <img src = { photo.url } />
                 <div>
-                    <button>
+                    <button
+                        onClick = { this._showNPreviousPhoto }>
                         ←
                     </button>
                     <button
