@@ -5,12 +5,15 @@ import FlipMove from 'react-flip-move';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Styles from './styles.m.css';
-import { fetchPostsAsync } from '../../bus/posts/actions';
+import { createPostAsync, fetchPostsAsync } from '../../bus/posts/actions';
 import { Composer, Catcher, Post } from '../../components';
 import { mockedProfile } from '../../instruments/mockedData';
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators({ fetchPostsAsync }, dispatch),
+    actions: bindActionCreators({
+        createPostAsync,
+        fetchPostsAsync,
+    }, dispatch),
 });
 const mapStateToProps = state => ({
     posts: state.posts,

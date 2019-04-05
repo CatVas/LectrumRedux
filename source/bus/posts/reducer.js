@@ -1,13 +1,16 @@
 
 import { fromJS, List } from 'immutable';
-import { FILL_POSTS } from './types';
+import { CREATE_POST_ASYNC, FILL_POSTS } from './types';
 
 const initialState = List();
 
-export const postsReducer = (state = initialState, action) => {
-    switch (action.type) {
+export const postsReducer = (state = initialState, { payload, type }) => {
+    switch (type) {
+        case CREATE_POST_ASYNC:
+            return state.unshift(fromJS(payload));
+
         case FILL_POSTS:
-            return fromJS(action.payload);
+            return fromJS(payload);
 
         default:
             return state;
