@@ -1,0 +1,6 @@
+
+export const types = {
+    EMIT_ERROR: 'EMIT_ERROR',
+    START_FETCHING: 'START_FETCHING',
+    STOP_FETCHING: 'STOP_FETCHING',
+};
