@@ -7,7 +7,6 @@ import { bindActionCreators } from 'redux';
 import Styles from './styles.m.css';
 import { postActions } from '../../bus/posts/actions';
 import { Composer, Catcher, Post } from '../../components';
-import { mockedProfile } from '../../instruments/mockedData';
 
 const { createPostAsync, fetchPostsAsync } = postActions;
 const mapDispatchToProps = dispatch => ({
@@ -18,14 +17,11 @@ const mapDispatchToProps = dispatch => ({
 });
 const mapStateToProps = state => ({
     posts: state.posts,
+    profile: state.profile,
 });
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Posts extends Component {
-    static defaultProps = {
-        profile: mockedProfile,
-    };
-
     componentDidMount () {
         const { actions } = this.props;
 
