@@ -3,6 +3,8 @@ import { types } from './types';
 import { api } from '../../REST';
 
 export const postActions = {
+    clearPosts: () => ({ type: types.CLEAR_POSTS }),
+
     createPost: (post) => ({
         payload: post,
         type:    types.CREATE_POST,

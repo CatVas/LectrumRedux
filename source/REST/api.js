@@ -3,6 +3,15 @@ import { groupId, MAIN_URL } from './config';
 
 export const api = {
     auth: {
+        authenticate () {
+            return fetch(`${MAIN_URL}/user/login`, {
+                body: JSON.stringify({ token: this.token }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                method: 'POST',
+            });
+        },
         login (credentials) {
             return fetch(`${MAIN_URL}/user/login`, {
                 body: JSON.stringify(credentials),
@@ -10,6 +19,12 @@ export const api = {
                     'Content-Type': 'application/json',
                 },
                 method: 'POST',
+            });
+        },
+        logout () {
+            return fetch(`${MAIN_URL}/user/logout`, {
+                headers: { Authorization: this.token },
+                method: 'GET',
             });
         },
         signup (userInfo) {
@@ -22,13 +37,16 @@ export const api = {
             });
         },
     },
+    get token() {
+        return localStorage.getItem('token');
+    },
     posts: {
         create (comment) {
             return fetch(`${MAIN_URL}/feed`, {
                 body: JSON.stringify({ comment }),
                 headers: {
+                    Authorization: this.token,
                     'Content-Type': 'application/json',
-                    'x-no-auth': groupId,
                 },
                 method: 'POST',
             });
@@ -36,9 +54,7 @@ export const api = {
 
         fetch () {
             return fetch(`${MAIN_URL}/feed`, {
-                headers: {
-                    'x-no-auth': groupId,
-                },
+                headers: { Authorization: this.token },
                 method: 'GET',
             })
         }

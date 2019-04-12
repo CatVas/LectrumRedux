@@ -1,5 +1,6 @@
 
 export const types = {
+    CLEAR_POSTS:       'CLEAR_POSTS',
     CREATE_POST:       'CREATE_POST',
     CREATE_POST_ASYNC: 'CREATE_POST_ASYNC',
     FETCH_POSTS_ASYNC: 'FETCH_POSTS_ASYNC',

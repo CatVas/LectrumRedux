@@ -12,6 +12,9 @@ const initialState = Map({
 
 export const profileReducer = (state = initialState, action) => {
     switch (action.type) {
+        case types.CLEAR_PROFILE:
+            return state.clear();
+
         case types.FILL_PROFILE:
             return state.merge(action.payload);
 
