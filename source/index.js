@@ -2,9 +2,10 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { ConnectedRouter as Router } from 'react-router-redux';
 
 // Instruments
+import { history } from './init/middleware/core';
 import { store } from './init/store';
 import './theme/init';
 
@@ -13,7 +14,7 @@ import { App } from './navigation';
 
 render(
     <Provider store = { store }>
-        <Router>
+        <Router history = { history }>
             <App />
         </Router>
     </Provider>,

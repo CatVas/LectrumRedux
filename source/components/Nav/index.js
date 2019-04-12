@@ -6,21 +6,23 @@ import cx from 'classnames';
 
 // Instruments
 import Styles from './styles.m.css';
+import { authAction } from '../../bus/auth/actions';
 import { book } from '../../navigation/book';
+
+const mapDispatchToProps = {
+    logoutAsync: authAction.logoutAsync,
+};
 
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.get('isAuthenticated'),
     profile:         state.profile,
 });
 
-@connect(mapStateToProps)
+@connect(mapStateToProps, mapDispatchToProps)
 export default class Nav extends Component {
     static defaultProps = {
         // State
         isOnline:        false,
-
-        // Actions
-        logoutAsync: () => {},
     };
 
     _getNav = () => {
