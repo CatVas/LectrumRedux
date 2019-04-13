@@ -57,6 +57,13 @@ export const api = {
                 headers: { Authorization: this.token },
                 method: 'GET',
             })
-        }
+        },
+
+        remove (postId) {
+            return fetch(`${MAIN_URL}/feed/${postId}`, {
+                headers: { Authorization: this.token },
+                method: 'DELETE',
+            })
+        },
     },
 };
