@@ -23,4 +23,15 @@ export const postActions = {
         payload: posts,
         type:    types.FILL_POSTS,
     }),
+
+    removePost: (postId) => ({
+        payload: postId,
+        type:    types.REMOVE_POST,
+    }),
+
+    removePostAsync: (postId) => ({
+        payload: postId,
+        type:    types.REMOVE_POST_ASYNC,
+    }),
+
 };
