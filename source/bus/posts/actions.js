@@ -24,6 +24,16 @@ export const postActions = {
         type:    types.FILL_POSTS,
     }),
 
+    likePost: (likePostData) => ({
+        payload: likePostData,
+        type:    types.LIKE_POST,
+    }),
+
+    likePostAsync: (postId) => ({
+        payload: postId,
+        type:    types.LIKE_POST_ASYNC,
+    }),
+
     removePost: (postId) => ({
         payload: postId,
         type:    types.REMOVE_POST,
