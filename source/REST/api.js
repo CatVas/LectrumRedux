@@ -59,6 +59,13 @@ export const api = {
             })
         },
 
+        like (postId) {
+            return fetch(`${MAIN_URL}/feed/like/${postId}`, {
+                headers: { Authorization: this.token },
+                method: 'PUT',
+            })
+        },
+
         remove (postId) {
             return fetch(`${MAIN_URL}/feed/${postId}`, {
                 headers: { Authorization: this.token },

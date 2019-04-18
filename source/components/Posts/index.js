@@ -8,11 +8,14 @@ import Styles from './styles.m.css';
 import { postActions } from '../../bus/posts/actions';
 import { Composer, Catcher, Post } from '../../components';
 
-const { createPostAsync, fetchPostsAsync, removePostAsync } = postActions;
+const {
+    createPostAsync, fetchPostsAsync, likePostAsync, removePostAsync,
+} = postActions;
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators({
         createPostAsync,
         fetchPostsAsync,
+        likePostAsync,
         removePostAsync,
     }, dispatch),
 });
