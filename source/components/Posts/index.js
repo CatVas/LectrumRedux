@@ -9,7 +9,11 @@ import { postActions } from '../../bus/posts/actions';
 import { Composer, Catcher, Post } from '../../components';
 
 const {
-    createPostAsync, fetchPostsAsync, likePostAsync, removePostAsync,
+    createPostAsync,
+    fetchPostsAsync,
+    likePostAsync,
+    removePostAsync,
+    unlikePostAsync,
 } = postActions;
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators({
@@ -17,6 +21,7 @@ const mapDispatchToProps = dispatch => ({
         fetchPostsAsync,
         likePostAsync,
         removePostAsync,
+        unlikePostAsync,
     }, dispatch),
 });
 const mapStateToProps = state => ({

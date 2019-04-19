@@ -44,4 +44,14 @@ export const postActions = {
         type:    types.REMOVE_POST_ASYNC,
     }),
 
+    unlikePost: (likePostData) => ({
+        payload: likePostData,
+        type:    types.UNLIKE_POST,
+    }),
+
+    unlikePostAsync: (postId) => ({
+        payload: postId,
+        type:    types.UNLIKE_POST_ASYNC,
+    }),
+
 };
