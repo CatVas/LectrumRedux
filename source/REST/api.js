@@ -37,9 +37,11 @@ export const api = {
             });
         },
     },
+
     get token() {
         return localStorage.getItem('token');
     },
+
     posts: {
         create (comment) {
             return fetch(`${MAIN_URL}/feed`, {
@@ -71,6 +73,15 @@ export const api = {
                 headers: { Authorization: this.token },
                 method: 'DELETE',
             })
+        },
+    },
+
+    users: {
+        fetch () {
+            return fetch(`${MAIN_URL}/user/all`, {
+                headers: { Authorization: this.token },
+                method: 'GET',
+            });
         },
     },
 };

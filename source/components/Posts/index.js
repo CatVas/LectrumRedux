@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Styles from './styles.m.css';
 import { postActions } from '../../bus/posts/actions';
+import { usersActions } from '../../bus/users/actions';
 import { Composer, Catcher, Post } from '../../components';
 
 const {
@@ -22,6 +23,7 @@ const mapDispatchToProps = dispatch => ({
         likePostAsync,
         removePostAsync,
         unlikePostAsync,
+        ...usersActions,
     }, dispatch),
 });
 const mapStateToProps = state => ({
@@ -35,6 +37,7 @@ export default class Posts extends Component {
         const { actions } = this.props;
 
         actions.fetchPostsAsync();
+        actions.fetchUsersAsync();
     }
 
     render () {

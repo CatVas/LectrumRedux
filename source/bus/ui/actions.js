@@ -9,6 +9,9 @@ export const uiActions = {
         type:    types.EMIT_ERROR,
     }),
 
+    setOfflineState: () => ({ type: types.SET_OFFLINE_STATE }),
+    setOnlineState: () => ({ type: types.SET_ONLINE_STATE }),
+
     startFetching: () => {
         return {
             type: types.START_FETCHING,
