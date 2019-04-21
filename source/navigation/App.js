@@ -6,10 +6,13 @@ import { withRouter } from 'react-router-dom';
 import Private from './Private';
 import Public from './Public';
 import { authAction } from '../bus/auth/actions';
+import { socketActions } from '../bus/socket/actions';
 import { Loading } from '../components';
+import { joinSocketChannel, socket } from '../init/socket';
 
 const mapDispatchToProps = {
     initializeAsync: authAction.initializeAsync,
+    ...socketActions,
 };
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.get('isAuthenticated'),
@@ -21,16 +24,27 @@ const mapStateToProps = state => ({
 @connect(mapStateToProps, mapDispatchToProps)
 export default class App extends Component {
     componentDidMount () {
-        this.props.initializeAsync();
+        const { initializeAsync, listenConnection } = this.props;
+
+        initializeAsync();
+        joinSocketChannel();
+        listenConnection();
+    }
+
+    componentWillUnmount () {
+        socket.removeListener('connect');
+        socket.removeListener('disconnect');
     }
 
     render () {
-        const { isAuthenticated, isInitialized } = this.props;
+        const { isAuthenticated, isInitialized, listenPosts } = this.props;
 
         if (!isInitialized) {
             return <Loading />;
         }
 
-        return isAuthenticated ? <Private /> : <Public />;
+        return isAuthenticated
+            ? <Private listenPosts = { listenPosts } />
+            : <Public />;
     }
 }

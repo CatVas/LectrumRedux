@@ -15,16 +15,12 @@ const mapDispatchToProps = {
 
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.get('isAuthenticated'),
+    isOnline: state.ui.get('isOnline'),
     profile:         state.profile,
 });
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Nav extends Component {
-    static defaultProps = {
-        // State
-        isOnline:        false,
-    };
-
     _getNav = () => {
         const { isAuthenticated, profile } = this.props;
 
