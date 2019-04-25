@@ -23,4 +23,9 @@ export const profileActions = {
         payload: newName,
         type:    types.UPDATE_NAME_ASYNC,
     }),
+
+    updatePasswordAsync: payload => ({
+        payload,
+        type: types.UPDATE_PASSWORD_ASYNC,
+    }),
 };
