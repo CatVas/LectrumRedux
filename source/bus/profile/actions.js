@@ -8,4 +8,19 @@ export const profileActions = {
         payload: profile,
         type:    types.FILL_PROFILE,
     }),
+
+    updateAvatar: (newAvatarUrl) => ({
+        payload: newAvatarUrl,
+        type:    types.UPDATE_AVATAR,
+    }),
+
+    updateAvatarAsync: (newAvatar) => ({
+        payload: newAvatar,
+        type:    types.UPDATE_AVATAR_ASYNC,
+    }),
+
+    updateNameAsync: (newName) => ({
+        payload: newName,
+        type:    types.UPDATE_NAME_ASYNC,
+    }),
 };

@@ -1,4 +1,5 @@
 
+import { actions } from 'react-redux-form';
 import { replace } from 'react-router-redux';
 import { apply, put } from 'redux-saga/effects';
 import { authAction } from '../../../auth/actions';
@@ -26,6 +27,7 @@ export function* logout () {
         yield apply(localStorage, localStorage.removeItem, ['token']);
         yield put(postActions.clearPosts());
         yield put(profileActions.clearProfile());
+        yield put(actions.reset('forms.user'));
         yield put(uiActions.stopFetching());
         yield put(usersActions.clearUsers());
         yield put(authAction.logout());

@@ -76,6 +76,29 @@ export const api = {
         },
     },
 
+    profile: {
+        updateAvatar (avatarFormData) {
+            return fetch(`${MAIN_URL}/image`, {
+                body: avatarFormData,
+                headers: {
+                    Authorization: this.token,
+                },
+                method: 'POST',
+            });
+        },
+
+        updateProfile (profileInfo) {
+            return fetch(`${MAIN_URL}/user`, {
+                body: JSON.stringify(profileInfo),
+                headers: {
+                    Authorization: this.token,
+                    'Content-Type': 'application/json',
+                },
+                method: 'PUT',
+            });
+        },
+    },
+
     users: {
         fetch () {
             return fetch(`${MAIN_URL}/user/all`, {
