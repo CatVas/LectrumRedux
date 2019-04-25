@@ -16,7 +16,7 @@ const mapStateToProps = state => ({
     isFetching: state.ui.isFetching,
 });
 
-@connect(null, mapDispatchToProps)
+@connect(mapStateToProps, mapDispatchToProps)
 export default class LoginForm extends Component {
     _submitLoginForm = (credentials) => {
         this.props.loginAsync(credentials);

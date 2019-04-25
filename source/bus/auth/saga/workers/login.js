@@ -1,4 +1,5 @@
 
+import { actions } from 'react-redux-form';
 import { apply, put } from 'redux-saga/effects';
 import { authAction } from '../../../auth/actions';
 import { profileActions } from '../../../profile/actions';
@@ -28,6 +29,14 @@ export function* login ({ payload: credentials }) {
             profile.token,
         ]);
         yield put(profileActions.fillProfile(profile));
+        yield put(actions.change(
+            'forms.user.profile.firstName',
+            profile.firstName,
+        ));
+        yield put(actions.change(
+            'forms.user.profile.lastName',
+            profile.lastName,
+        ));
         yield put(authAction.authenticate());
     } catch (error) {
         yield put(uiActions.emitError(error, 'login worker'));

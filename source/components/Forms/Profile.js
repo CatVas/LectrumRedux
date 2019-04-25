@@ -1,5 +1,6 @@
 // Core
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Form, Control } from 'react-redux-form';
 import cx from 'classnames';
@@ -7,20 +8,26 @@ import { Map } from 'immutable';
 
 // Instruments
 import Styles from './styles.m.css';
+import { profileActions } from '../../bus/profile/actions';
 import { validateLength } from '../../instruments/validators';
 import { book } from '../../navigation/book';
 
 // Components
 import { Input } from '../../components';
 
+const mapDispatchToProps = profileActions;
+const mapStateToProps = state => ({
+    isFetching: state.ui.isFetching,
+    profile: state.profile,
+});
+
+@connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)
 export default class Profile extends Component {
     static defaultProps = {
-        // State
-        isFetching: false,
-        profile:    Map(),
-
         // Actions
-        updateNameAsync:   () => {},
         updateAvatarAsync: () => {},
     };
 
