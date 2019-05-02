@@ -2,7 +2,7 @@
 import { fromJS, List } from 'immutable';
 import { types } from './types';
 
-const initialState = List();
+export const initialState = List();
 
 export const usersReducer = (state = initialState, action) => {
     switch (action.type) {
