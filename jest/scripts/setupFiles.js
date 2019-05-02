@@ -15,6 +15,14 @@ const userProfile = {
     token,
 };
 
+const users = Array(5).map((n) => ({
+    id:        `${userProfile.id}${n}`,
+    avatar:    `${userProfile.avatar}${n}`,
+    firstName: `${userProfile.firstName}${n}`,
+    lastName:  `${userProfile.lastName}${n}`,
+    token,
+}));
+
 const credentials = {
     email:    'test@email.com',
     password: '1111',
@@ -49,6 +57,7 @@ const url = 'https://www.url.com';
 
 global.__ = {
     userProfile,
+    users,
     errorMessage,
     token,
     error,
