@@ -7,6 +7,16 @@ const errorMessage = 'TEST_ERROR_MESSAGE.';
 const token = 'TEST_TOKEN';
 const error = new Error(errorMessage);
 
+const newAvatar = ['avatar'];
+const newName = {
+    firstName: 'Tufo',
+    lastName: 'Red Pirate',
+};
+const newPassword = {
+    newPassword: 'abcde',
+    oldPassword: '12345',
+};
+
 const userProfile = {
     id:        'TEST_ID',
     avatar:    'TEST_AVATAR',
@@ -56,6 +66,9 @@ const fetchResponseFail400 = {
 const url = 'https://www.url.com';
 
 global.__ = {
+    newAvatar,
+    newName,
+    newPassword,
     userProfile,
     users,
     errorMessage,
