@@ -2,6 +2,7 @@
 import { actions } from 'react-redux-form';
 import { apply, put } from 'redux-saga/effects';
 import { authAction } from '../../../auth/actions';
+import { notificationActions } from '../../../notification/actions';
 import { profileActions } from '../../../profile/actions';
 import { uiActions } from '../../../ui/actions';
 import { api } from '../../../../REST';
@@ -38,8 +39,14 @@ export function* login ({ payload: credentials }) {
             profile.lastName,
         ));
         yield put(authAction.authenticate());
+        yield put(notificationActions.showNotification('Welcome!'));
     } catch (error) {
         yield put(uiActions.emitError(error, 'login worker'));
+        yield put(notificationActions.showNotification(
+            'Bad login!',
+            'error',
+            'Login worker',
+        ));
     } finally {
         yield put(uiActions.stopFetching());
     }

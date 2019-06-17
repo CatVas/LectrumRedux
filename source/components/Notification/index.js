@@ -3,20 +3,18 @@ import React, { Component } from 'react';
 import { Transition } from 'react-transition-group';
 import gsap from 'gsap';
 import cx from 'classnames';
-import { Map } from 'immutable';
+import { connect } from 'react-redux';
 
 // Instruments
 import Styles from './styles.m.css';
+import { notificationActions } from '../../bus/notification/actions';
 
+const mapState = state => ({
+    notification: state.notification,
+});
+
+@connect(mapState, notificationActions)
 export default class Notification extends Component {
-    static defaultProps = {
-        // State
-        notification: Map(),
-
-        // Actions:
-        hideNotification: () => {},
-    };
-
     state = {
         notificationIn: true,
     };
